@@ -1,0 +1,39 @@
+<h3>Assignments List</h3>
+
+<%= params[:notice] if params[:notice] %>
+
+<% if !@assignments.empty? %>
+
+  <% if session[:role].blank? %>
+    <%= link_to "Add Assignment", new_classroom_assignment_path %> <br/><br/>
+  <% end %>
+
+  <table border="1">
+
+    <tr>
+      <td><b>Name</b></td>
+      <td><b>Description</b></td>
+      <td colspan="2"></td>
+    </tr>
+
+    <% @assignments.each do |assignment| %>
+      <tr>
+        <td><%= assignment.name %></td>
+        <td><%= assignment.description %></td>
+        <td><%= link_to 'Show', classroom_assignment_path(@classroom, assignment) %></td>
+        <td><%= link_to 'Submit', "/submit_assignment/#{@classroom.id}/#{assignment.id}" %></td>
+      </tr>
+    <% end %>
+  </table>
+
+<% else %>
+  <h4> No Assignments available</h4>
+  <% if session[:role].blank? %>
+    <p> Add Assignments from here: <%= link_to "Add Assignment", new_classroom_assignment_path %></p>
+  <% end %>
+<% end %>
+
+<br/><br/>
+
+<%= link_to 'Back to Home', root_path %>
+

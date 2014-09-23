@@ -1,0 +1,44 @@
+<h3>Students List</h3>
+
+<%= params[:notice] if params[:notice] %>
+
+  <% if !@students.empty? %>
+    <% if session[:role].blank? %>
+      <%= link_to "Add Student", new_student_path %> <br/>
+    <% end %>
+    <br/>
+    <table border="1">
+      <tr>
+        <td><b>Name</b></td>
+        <td><b>Course</b></td>
+        <td><b>Roll no</b></td>
+        <td colspan="2"></td>
+      </tr>
+
+      <% @students.each do |student| %>
+        <tr>
+          <td><%= student.name %></td>
+          <td><%= student.course %></td>
+          <td><%= student.roll_no %></td>
+          <td><%= link_to 'Show', student %></td>
+          <% if session[:role].blank? %>
+            <td><%= link_to 'Destroy', student, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+
+  <% else %>
+
+    <h4> No Students available</h4>
+    <% if session[:role].blank? %>
+      <p>Add Students from here: <%= link_to "Add Students", new_student_path %></p>
+    <% end %>
+
+  <% end %>
+
+<hr/>
+
+<%= link_to "Classrooms", classrooms_path %> <br/>
+<hr/>
+<%= link_to 'Back to Home', root_path %>

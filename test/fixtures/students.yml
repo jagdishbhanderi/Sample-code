@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+sachin:
+  name: "Sachin"
+  course: "BE Computer"
+  roll_no: 1
+
+bacancy:
+  name: "Bacancy"
+  course: "Bacancy Test"
+  roll_no: 2

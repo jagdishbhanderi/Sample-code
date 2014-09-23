@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: "Maths numeric"
+  description: "Its for simple maths assignment"
+  classroom_id: 1
+
+two:
+  name: "Physics example"
+  description: "Its for physics tutorial example"
+  classroom_id: 1

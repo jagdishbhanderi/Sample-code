@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+maths:
+  name: "Maths"
+  description: "Its about mathematics"
+
+physics:
+  name: "Physics"
+  description: "Its about physics"
+

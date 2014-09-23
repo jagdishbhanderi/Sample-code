@@ -1,0 +1,42 @@
+<h3>Classrooms List</h3>
+
+<%= params[:notice] if params[:notice] %>
+
+  <% if !@classrooms.empty? %>
+    <% if session[:role].blank? %>
+      <%= link_to "Add Classroom", new_classroom_path %> <br/><br/>
+    <% end %>
+
+    <table border="1">
+
+      <tr>
+        <td><b>Name</b></td>
+        <td><b>Description</b></td>
+        <td colspan="4"></td>
+      </tr>
+
+      <% @classrooms.each do |classroom| %>
+        <tr>
+          <td><%= classroom.name %></td>
+          <td><%= classroom.description %></td>
+          <td><%= link_to 'Show', classroom %></td>
+          <% if session[:role].blank? %>
+            <td><%= link_to 'Destroy', classroom, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+            <td><%= link_to 'Add Assignments',new_classroom_assignment_path(classroom) %></td>
+          <% end %>
+          <td><%= link_to 'Assignments',classroom_assignments_path(classroom)  %></td>
+        </tr>
+      <% end %>
+    </table>
+
+  <% else %>
+    <h4> No Classrooms available</h4>
+    <% if session[:role].blank? %>
+      <p>Add Classrooms from here: <%= link_to "Add Classroom", new_classroom_path %></p>
+    <% end %>
+  <% end %>
+
+<br/><br/>
+
+<%= link_to 'Back to Home', root_path %>
+
